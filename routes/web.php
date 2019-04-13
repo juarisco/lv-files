@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'panel'], function () {
+    Route::view('/', 'backend.dashboard')->name('admin');
+    Route::view('users', 'backend.users')->name('admin.users');
+    Route::view('upload-files', 'backend.files')->name('admin.upload');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
