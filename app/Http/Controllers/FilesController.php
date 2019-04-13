@@ -15,15 +15,19 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
-        $name = $request->file->getClientOriginalName();
+        if ($request->hasFile('file')) {
+            $name = $request->file->getClientOriginalName();
 
-        $request->file->storeAs('public', $name);
+            $request->file->storeAs('public', $name);
 
-        $file = new File();
-        $file->name = $name;
-        $file->save();
+            $file = new File();
+            $file->name = $name;
+            $file->save();
 
-        return back()->withInput();
+            return 'El archivo se subió exitosamente a la base de datos';
+        } else {
+            return back()->withInput();
+        }
     }
 
     public function show()
