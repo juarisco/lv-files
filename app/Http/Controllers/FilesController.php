@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class FilesController extends Controller
 {
     public function index()
@@ -9,8 +11,10 @@ class FilesController extends Controller
         return view('backend.files');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return 'store';
+        $request->file('file');
+
+        return $request->file->store('public');
     }
 }

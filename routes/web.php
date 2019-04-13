@@ -19,8 +19,8 @@ Route::group(['prefix' => 'panel'], function () {
     Route::view('/', 'backend.dashboard')->name('admin');
     Route::view('users', 'backend.users')->name('admin.users');
 
-    Route::get('upload-files', 'FilesController@index')->name('admin.upload.index');
-    Route::get('upload-files/s', 'FilesController@store')->name('admin.upload.store');
+    Route::get('upload-files', 'FilesController@index')->name('admin.files.index');
+    Route::post('guardar', 'FilesController@store')->name('admin.files.store');
 });
 
 Auth::routes();
