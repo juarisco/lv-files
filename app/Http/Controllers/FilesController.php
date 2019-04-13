@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\File;
 
 class FilesController extends Controller
@@ -30,8 +29,8 @@ class FilesController extends Controller
         }
     }
 
-    public function show()
+    public function show($name)
     {
-        return Storage::files('public');
+        return response()->download(Storage_path('app/public/' . $name), null, [], null);
     }
 }
