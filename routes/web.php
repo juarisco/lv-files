@@ -21,6 +21,7 @@ Route::group(['prefix' => 'panel'], function () {
 
     Route::get('upload-files', 'FilesController@index')->name('admin.files.index');
     Route::post('guardar', 'FilesController@store')->name('admin.files.store');
+    Route::get('view-files', 'FilesController@show')->name('admin.files.show');
 });
 
 Auth::routes();

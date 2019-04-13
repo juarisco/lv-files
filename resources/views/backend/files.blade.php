@@ -22,7 +22,7 @@
             </div>
     
             <div class="col s6 right">
-                <form action="guardar" id="upload"  method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.files.store') }}" id="upload"  method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="file-field input-field">
                         <div class="btn">
