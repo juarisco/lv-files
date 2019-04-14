@@ -34,8 +34,8 @@
 				</div>
 			</li>
 			<li {{ request()->is('panel') ? 'class=active' : '' }}><a class="waves-effect" href="{{ route('admin') }}"><i class="fas fa-tasks"></i>Tablero</a></li>
-		    <li {{ request()->is('upload-files') ? 'class=active' : '' }}><a class="waves-effect" href="{{ route('admin.users') }}"><i class="fas fa-user-secret"></i>Usuarios</a></li>
-		    <li {{ request()->is('users') ? 'class=active' : '' }}><a class="waves-effect" href="{{ route('admin.files.index') }}"><i class="fas fa-cloud-upload-alt"></i>Archivos</a></li>
+		    <li {{ request()->is('panel/users') ? 'class=active' : '' }}><a class="waves-effect" href="{{ route('admin.users') }}"><i class="fas fa-user-secret"></i>Usuarios</a></li>
+		    <li {{ request()->is('panel/files') ? 'class=active' : '' }}><a class="waves-effect" href="{{ route('admin.files.index') }}"><i class="fas fa-cloud-upload-alt"></i>Archivos</a></li>
 		</ul>
 		<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons menu">menu</i></a>
 	</div>
@@ -54,6 +54,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.sidenav').sidenav();
+			$('select').formSelect();
 		});
 	</script>
 </body>
