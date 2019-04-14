@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'panel'], function () {
+Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
     Route::view('/', 'backend.dashboard')->name('admin');
     Route::view('users', 'backend.users')->name('admin.users');
 
