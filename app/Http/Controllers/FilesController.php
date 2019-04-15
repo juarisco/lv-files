@@ -10,7 +10,8 @@ class FilesController extends Controller
 {
     public function index()
     {
-        return view('backend.files.index');
+        $PostFiles = \DB::table('post_files')->get();
+        return view('backend.files.index', compact('PostFiles'));
     }
 
     public function create()
