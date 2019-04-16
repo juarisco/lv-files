@@ -10,7 +10,8 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Tipo de archivo</th>
-                    <th>Descargar</th>
+                    <th>Ver</th>
+                    <th>Ocultar</th>
                     <th>Eliminar</th>
                 </tr>
                 </thead>
@@ -21,8 +22,11 @@
                             <td>{{ $PostFile->id }}</td>
                             <td>{{ $PostFile->name }}</td>
                             <td>{{ $PostFile->category->name }}</td>
-                            <td><a class="waves-effect waves-light green accent-4 btn"><i class="material-icons left">cloud_download</i> Bajar</a></td>
-                            <td><a class="waves-effect waves-light red darken-1 btn"><i class="material-icons left">delete</i> Borrar</a></td>
+                            <td><a href="{{ route('admin.files.show', $PostFile->name) }}" target="_blank" class="waves-effect waves-light green accent-4 btn"><i class="material-icons left">remove_red_eye</i> Ver</a></td>
+
+                            <td><a href="{{ route('admin.files.hide', $PostFile->id) }}" class="waves-effect waves-light blue lighten-2 btn"><i class="material-icons left">visibility_off</i> Ocultar</a></td>
+                            
+                            <td><a href="{{ route('admin.files.delete', $PostFile->name) }}" class="waves-effect waves-light red darken-1 btn"><i class="material-icons left">delete</i> Borrar</a></td>
                         </tr>
                     @endforeach              
 

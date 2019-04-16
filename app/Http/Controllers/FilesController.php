@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PostFile;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -26,9 +27,9 @@ class FilesController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('file')) {
-            // $name = $request->file->getClientOriginalName();
+            $name = $request->file->getClientOriginalName();
 
-            $name = $request->get('name');
+            // $name = $request->get('name');
             $category = $request->get('category');
 
             $request->file->storeAs('public', $name);
@@ -47,5 +48,20 @@ class FilesController extends Controller
     public function show($name)
     {
         return response()->download(Storage_path('app/public/' . $name), null, [], null);
+    }
+
+    public function delete($name)
+    {
+        Storage::delete($name);
+        unlink(Storage_path('app/public/' . $name));
+
+        return 'El archivo fue eliminado éxitosamente del sistema';
+    }
+
+    public function hide($id)
+    {
+        PostFile::where('id', $id)->delete();
+
+        return 'El archivo se encuentra oculto y no está disponible ni en la base de datos';
     }
 }
