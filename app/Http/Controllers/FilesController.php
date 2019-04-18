@@ -11,10 +11,10 @@ class FilesController extends Controller
 {
     public function index()
     {
-        // $PostFiles = \DB::table('post_files')->get();
-        $PostFiles = PostFile::all();
+        // $PostFiles = PostFile::all();
         // $PostFiles->load('category');
-        // dd($PostFiles);
+        $PostFiles = PostFile::where('user_id', auth()->id())->get();
+
         return view('backend.files.index', compact('PostFiles'));
     }
 
