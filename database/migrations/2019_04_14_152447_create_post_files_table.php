@@ -19,6 +19,7 @@ class CreatePostFilesTable extends Migration
             $table->string('name');
 
             $table->unsignedInteger('category_id');
+            $table->unsignedInteger('user_id');
 
             $table->timestamps();
         });

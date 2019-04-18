@@ -37,6 +37,7 @@ class FilesController extends Controller
             $file = new PostFile();
             $file->name = $name;
             $file->category_id = $category;
+            $file->user_id = auth()->id();
             $file->save();
 
             return 'El archivo se subió exitosamente a la base de datos';
